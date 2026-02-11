@@ -2,14 +2,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
-
-.container-cursos {
-    display: none;
-}
-
-.container-cursos.active {
-    display: flex;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 header {
@@ -27,6 +21,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 96px;
 }
 
 .logo img {
@@ -41,20 +36,158 @@ header {
 
 .botao-sair {
     display: none;
+    height: 42px;
+    margin-right: 96px;
 }
 
 .botao-sair.active {
     display: flex;
 }
 
+.botao-sair h1{
+    font-size: 36px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
 .botao-voltar {
     display: none;
+    height: 42px;
+    margin-right: 96px;
 }
 
 .botao-voltar.active {
     display: flex;
 }
 
+.container-cursos {
+    display: none;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 78px;
+}
+
+.container-cursos.active {
+    display: flex;
+}
+
+.anuncio-curso {
+    display: flex;
+    width: 500px;
+    flex-wrap: wrap;
+    margin-left: 96px;
+    text-align: left;
+}
+
+.anuncio-curso h1 {
+    width: 100%;
+}
+
+.cursos {
+    margin-right: 96px;
+}
+
+.ds, .redes {
+    width: 400px;
+    height: 200px;
+    background-color: #3347B0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 44px;
+    color: white;
+    box-shadow:  12px 12px 4px #3347B080;
+    gap: 20px;
+}
+
+.ds {
+    margin-bottom: 25px;
+}
+
+.redes {
+    margin-top: 25px;
+}
+
+.anuncio-curso h1 {
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+}
+
+.anuncio-curso h1 a {
+    font-weight: 700;
+    font-style: bold;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    color: #3347B0;
+}
+
+footer {
+    height: 140px;
+    width: 100%;
+    background-color: #3347B0;
+    margin-top: 98px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sociais {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.contatos h1 {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+.contatos .email, .telefone , .local {
+    display: flex;
+    gap: 24px;
+}
+.contatos {
+    display: flex;         
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sociais h1 {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.redes-sociais {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.redes-sociais .youtube, .twitter, .instagram, .facebook {
+    height: 48px;
+    width: 48px;
+    border-radius: 100px;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    padding-bottom: 62px;
+}
+
+.container-cursos h1 {
+    font-size: 57.3px;
+    margin-bottom: 77.87px;
+}
 
 .container-curso {
     display: none;
