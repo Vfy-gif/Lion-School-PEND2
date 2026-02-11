@@ -1,0 +1,76 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container-cursos {
+    display: none;
+}
+
+.container-cursos.active {
+    display: flex;
+}
+
+header {
+    height: 100px;
+    width: 100%;
+    background-color: #3347B0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 75px;
+    width: 146px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    height: 100%;
+}
+
+.logo h1 {
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+.botao-sair {
+    display: none;
+}
+
+.botao-sair.active {
+    display: flex;
+}
+
+.botao-voltar {
+    display: none;
+}
+
+.botao-voltar.active {
+    display: flex;
+}
+
+
+.container-curso {
+    display: none;
+}
+
+.container-curso.active {
+    display: flex;
+}
+
+.container-aluno {
+    display: none;
+}
+
+.container-aluno.active {
+    display: flex;
+}
+
+
+
