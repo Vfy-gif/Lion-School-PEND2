@@ -1,6 +1,9 @@
 'use strict'
 
-const cursos = document.getElementById("cursos")
+const cursos = document.getElementById('cursos')
+const alunos = document.getElementById('alunos')
+const botao_sair = document.querySelector('.botao-sair')
+const botao_voltar = document.querySelector('.botao-voltar')
 const container_cursos = document.querySelector('.container-cursos')
 const container_curso = document.querySelector('.container-curso')
 const container_aluno = document.querySelector('.container-aluno')
@@ -50,22 +53,59 @@ async function CriarCursos() {
 
         curso_criado.addEventListener('click', function () {
             container_cursos.classList.remove('active')
+            botao_sair.classList.remove('active')
             container_curso.classList.add('active')
+            botao_voltar.classList.add('active')
+            CriarListaAlunos(curso.id, curso.nome)
         })
 
     });
 }
 
-async function CriarListaAlunos(id) {
+async function CriarListaAlunos(id, cursoNome) {
 
-    let cursos = await lerCursos()
+    const titulo_curso = container_curso.querySelector('h1');
 
-    if (id = cursos.id) {
-        let nomeCurso = document.createElement('h1')
-        let aluno = await listaAlunosPorCurso(id)
+    if (titulo_curso) {
+        titulo_curso.remove();
     }
 
+    alunos.replaceChildren()
+
+    let nomeCurso = document.createElement('h1')
+    let alunos_data = await listaAlunosPorCurso(id)
+
+    nomeCurso.textContent = cursoNome
+
+    container_curso.appendChild(nomeCurso)
+    container_curso.appendChild(alunos)
+
+    alunos_data.forEach(aluno => {
+
+        let cardAluno = document.createElement('div')
+        let fotoAluno = document.createElement('img')
+        let nomeAluno = document.createElement('h1')
+
+        fotoAluno.src = aluno.foto
+        fotoAluno.alt = "foto-perfil"
+        nomeAluno.textContent = aluno.nome
+
+        cardAluno.classList.add('aluno', 'finalizado-curso-aluno')
+
+        alunos.appendChild(cardAluno)
+        cardAluno.appendChild(fotoAluno)
+        cardAluno.appendChild(nomeAluno)
+
+    })
+
 }
+
+botao_voltar.addEventListener('click', function () {
+    container_cursos.classList.add('active')
+    botao_sair.classList.add('active')
+    container_curso.classList.remove('active')
+    botao_voltar.classList.remove('active')
+})
 
 
 
