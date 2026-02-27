@@ -19,6 +19,16 @@ async function CriarCursos() {
     cursos_data.forEach(curso => {
         let curso_criado = document.createElement("div")
         let nomeCurso = document.createElement("h1")
+        let imagem = document.createElement('img')
+
+        if(curso.nome == "Desenvolvimento de Sistemas") {
+            imagem.src = "../img/icon-desenvolvimento.svg"
+            curso_criado.appendChild(imagem)
+        } else if (curso.nome == "Redes") {
+            imagem.src = "../img/icon-redes.svg"
+            curso_criado.appendChild(imagem)
+        }
+            
 
         curso_criado.classList.add('curso')
         curso_criado.id = curso.id

@@ -61,6 +61,7 @@ body {
     display: none;
     height: 42px;
     margin-right: 96px;
+    transition: 0.5s;
 }
 
 .botao-voltar.active {
@@ -71,6 +72,11 @@ body {
     font-size: 36px;
     font-family: 'Roboto', sans-serif;
     color: white;
+}
+
+.botao-voltar:active {
+    transform: scale(0.7); 
+    background-color: #555;
 }
 
 .container-cursos {
@@ -114,6 +120,12 @@ body {
     color: white;
     box-shadow: 12px 12px 4px #3347B080;
     margin: 20px 0 20px;
+    gap: 24px;
+    transition: 0.5s;
+}
+
+.curso:hover {
+    transform: scale(1.05);
 }
 
 .curso h1 {
@@ -386,6 +398,7 @@ main {
     width: 500px;
     height: 500px;
     box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.25);
+    gap: 10%;
     flex-direction: column;
 }
 
@@ -393,9 +406,76 @@ main {
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     text-align: center;
+    color: #3347B0;
     text-shadow: 0px 5px 12px rgba(0, 0, 0, 0.25);
 }
 
 .detalhes-aluno img {
     border-radius: 300px;
+}
+
+@media (max-width: 768px) {
+    .logo, .botao-sair, .botao-voltar {
+        margin-inline: 20px; 
+    }
+
+    .container-cursos {
+        flex-direction: column; 
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .anuncio-curso {
+        width: 100%;
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .anuncio-curso img, .container-cursos > img {
+        width: 80%; 
+        height: auto;
+    }
+
+    .cursos {
+        margin-right: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .curso {
+        width: 90%; 
+        font-size: 28px;
+    }
+
+    .menu-curso {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .container-aluno {
+        flex-direction: column;
+        gap: 40px;
+        margin-top: 50px;
+    }
+
+    .detalhes-aluno, .desempenho {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+    }
+
+    footer {
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .sociais {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
 }
