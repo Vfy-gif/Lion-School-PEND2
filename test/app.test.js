@@ -8,8 +8,7 @@
  *********************************************************************************************************************/
 
 //Import do arquivo que será feito o teste unitário
-const test = require('node:test')
-const requisicoes_front_end = require('../app.js')
+const requisicoes_front_end = require('../js/reqs.js')
 
 test('Validação de requisição na busca dos alunos da API: ', async function() {
     result = await requisicoes_front_end.lerAlunos()
@@ -30,9 +29,13 @@ test('Validação de requisição na busca dos alunos por curso da API: ', async
 })
 
 test('Validação de requisição na busca dos aluno da API: ', async function() {
-    result = await requisicoes_front_end.buscarAluno(1)
 
-    expect(Array.isArray(result)).toBeProperty('id')
+    const result = await requisicoes_front_end.buscarAluno(1)
+    expect(result).toBeDefined()
+    expect(result).not.toBeNull()
+
+    expect(result).toHaveProperty('id')
+    expect(result).toHaveProperty('nome')
 })
 
 
