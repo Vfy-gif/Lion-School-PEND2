@@ -12,7 +12,7 @@ const container_aluno = document.querySelector('.container-aluno')
 
 
 async function lerAlunos() {
-    const url = 'https://lion-school-phbo.onrender.com/alunos'
+    const url = 'https://lion-school-backend.onrender.com/alunos'
 
     const response = await fetch(url)
     const alunos = await response.json()
@@ -21,7 +21,7 @@ async function lerAlunos() {
 }
 
 async function lerCursos() {
-    const url = 'https://lion-school-phbo.onrender.com/cursos'
+    const url = 'https://lion-school-backend.onrender.com/cursos'
 
     const response = await fetch(url)
     const cursos = await response.json()
@@ -30,7 +30,7 @@ async function lerCursos() {
 }
 
 async function listaAlunosPorCurso(id) {
-    const url = `https://lion-school-phbo.onrender.com/alunos?curso_id=${id}`
+    const url = `https://lion-school-backend.onrender.com/alunos?curso_id=${id}`
 
     const response = await fetch(url)
     const alunos = await response.json()
@@ -39,7 +39,7 @@ async function listaAlunosPorCurso(id) {
 }
 
 async function buscarAluno(id) {
-    const url = `https://lion-school-phbo.onrender.com/alunos/${id}`
+    const url = `https://lion-school-backend.onrender.com/alunos/${id}`
 
     const response = await fetch(url)
     const aluno = await response.json()
@@ -121,11 +121,10 @@ async function CriarListaAlunos(id, cursoNome) {
 
 async function AbrirPerfilAluno(id) {
 
-    let aluno = await buscarAluno(id)
+    const aluno = await buscarAluno(id)
 
-    let perfilAluno = document.createElement('div')
-    let fotoAluno = document.createElement('img')
-    let nomeAluno = document.createElement('h1')
+    const fotoAluno = document.createElement('img')
+    const nomeAluno = document.createElement('h1')
 
     fotoAluno.src = aluno.foto
     nomeAluno.textContent = aluno.nome
@@ -133,30 +132,41 @@ async function AbrirPerfilAluno(id) {
     aluno.desempenho.forEach(nota => {
         let notaMateria = document.createElement('div')
         let notaValorGrafico = document.createElement('div')
+        let coluna = document.createElement('div')
         let notaValor = document.createElement('h2')
         let nomeMateria = document.createElement('h1')
 
-        notaValorGrafico.style.height = nota.valor + '%'
+        coluna.classList.add('coluna-nota')
+        notaMateria.classList.add('nota-singular')
+
+        notaValorGrafico.style.height   = nota.valor + '%'
+        notaValorGrafico.style.width    = '16px' 
         notaValor.textContent = nota.valor
         nomeMateria.textContent = nota.categoria
 
-        if (nota.valor >= 60)
+        if (nota.valor >= 60) {
             notaValorGrafico.style.backgroundColor = '#3347B0'
-        else if (nota.valor > 30)
+            notaValor.style.color = '#3347B0'
+        } else if (nota.valor > 30) {
             notaValorGrafico.style.backgroundColor = '#E5B657'
-        else
+            notaValor.style.color = '#E5B657'
+        } else {
             notaValorGrafico.style.backgroundColor = '#C11010'
+            notaValor.style.color = '#C11010'
+        }
+            
 
         desempenho.appendChild(notaMateria)
-        nomeMateria.appendChild(notaValor)
-        notaMateria.appendChild(notaValorGrafico)
+        notaMateria.appendChild(notaValor)
+        notaMateria.appendChild(coluna)
+        coluna.appendChild(notaValorGrafico)
         notaMateria.appendChild(nomeMateria)
+        
 
     })
 
-    detalhes_aluno.appendChild(perfilAluno)
-    perfilAluno.appendChild(fotoAluno)
-    perfilAluno.appendChild(nomeAluno)
+    detalhes_aluno.appendChild(fotoAluno)
+    detalhes_aluno.appendChild(nomeAluno)
 
 }
 
@@ -180,6 +190,13 @@ botao_voltar.addEventListener('click', function () {
 
 
 CriarCursos()
+
+module.exports = {
+    lerAlunos,
+    lerCursos,
+    listaAlunosPorCurso,
+    buscarAluno
+}
 
 
 
