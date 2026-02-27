@@ -10,11 +10,11 @@ const container_cursos = document.querySelector('.container-cursos')
 const container_curso = document.querySelector('.container-curso')
 const container_aluno = document.querySelector('.container-aluno')
 
-import * as requisicoes_front_end from './reqs.js';
+import { lerCursos, listaAlunosPorCurso, buscarAluno, lerAlunos } from './reqs.js';
 
 async function CriarCursos() {
 
-    let cursos_data = await requisicoes_front_end.lerCursos()
+    let cursos_data = await lerCursos()
 
     cursos_data.forEach(curso => {
         let curso_criado = document.createElement("div")
@@ -49,7 +49,7 @@ async function CriarListaAlunos(id, cursoNome) {
     alunos.replaceChildren()
 
     let nomeCurso = document.createElement('h1')
-    let alunos_data = await requisicoes_front_end.listaAlunosPorCurso(id)
+    let alunos_data = await listaAlunosPorCurso(id)
 
     nomeCurso.textContent = cursoNome
 
@@ -86,7 +86,7 @@ async function CriarListaAlunos(id, cursoNome) {
 
 async function AbrirPerfilAluno(id) {
 
-    const aluno = await requisicoes_front_end.buscarAluno(id)
+    const aluno = await buscarAluno(id)
 
     const fotoAluno = document.createElement('img')
     const nomeAluno = document.createElement('h1')

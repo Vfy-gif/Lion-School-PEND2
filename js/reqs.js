@@ -1,4 +1,4 @@
-async function lerAlunos() {
+export async function lerAlunos() {
     const url = 'https://lion-school-backend.onrender.com/alunos'
 
     const response = await fetch(url)
@@ -7,7 +7,7 @@ async function lerAlunos() {
     return alunos
 }
 
-async function lerCursos() {
+export async function lerCursos() {
     const url = 'https://lion-school-backend.onrender.com/cursos'
 
     const response = await fetch(url)
@@ -16,7 +16,7 @@ async function lerCursos() {
     return cursos
 }
 
-async function listaAlunosPorCurso(id) {
+export async function listaAlunosPorCurso(id) {
     const url = `https://lion-school-backend.onrender.com/alunos?curso_id=${id}`
 
     const response = await fetch(url)
@@ -25,18 +25,11 @@ async function listaAlunosPorCurso(id) {
     return alunos
 }
 
-async function buscarAluno(id) {
+export async function buscarAluno(id) {
     const url = `https://lion-school-backend.onrender.com/alunos/${id}`
 
     const response = await fetch(url)
     const aluno = await response.json()
 
     return aluno
-}
-
-module.exports = {
-    lerAlunos,
-    lerCursos,
-    listaAlunosPorCurso,
-    buscarAluno
 }
